@@ -36,7 +36,7 @@ public class ChatGptService {
 
         previousMessages.add(chatGptResponseDTO.choices().get(0).message());
 
-        conversationHistory.put(userId, previousMessages);
+        conversationHistory.put(userId, List.copyOf(previousMessages));
 
         return new AnswerResponseDTO(chatGptResponseDTO.choices().get(0).message().getContent());
     }
